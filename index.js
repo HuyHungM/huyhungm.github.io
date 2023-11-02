@@ -14,6 +14,7 @@ const compression = require('compression');
 const cacheResponseDirective = require('express-cache-response-directive');
 const rateLimit = require('express-rate-limit')
 const timeout = require('connect-timeout');
+const morgan = require("morgan")
 require('express-async-errors');
 
 if (!config.port) console.log("🟡 [WARN]: Port chưa được cung cấp, chạy port mặc định 8080".yellow)
