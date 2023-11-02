@@ -13,7 +13,6 @@ module.exports = () => {
   const csurf = require('csurf');
   const compression = require('compression');
   const cacheResponseDirective = require('express-cache-response-directive');
-  const rateLimit = require('express-rate-limit')
   const timeout = require('connect-timeout');
   const morgan = require("morgan")
   require('express-async-errors');
@@ -40,11 +39,6 @@ module.exports = () => {
   app.use(csurf({ cookie: true }));
   app.use(compression());
   app.use(cacheResponseDirective());
-  app.use(rateLimit({
-    windowMs: 3 * 60 * 1000, // 10 minutes
-    max: 50,
-    message: 'Quá nhiều yêu cầu từ IP của bạn. Vui lòng thử lại sau 10 phút.'
-  }))
   const timeoutDuration = 5000;
   const timeoutOptions = {
     respond: false,
@@ -52,7 +46,7 @@ module.exports = () => {
   };
   const timeoutMiddleware = timeout(timeoutDuration, timeoutOptions);
   app.use(timeoutMiddleware);
-  // (ví dụ: 'dev', 'combined', 'common', 'short', 'tiny')
+  (ví dụ: 'dev', 'combined', 'common', 'short', 'tiny')
   const logFormat = 'short';
   const options = {
     stream: process.stdout,
