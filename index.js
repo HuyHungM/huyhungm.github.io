@@ -14,7 +14,6 @@ const compression = require('compression');
 const cacheResponseDirective = require('express-cache-response-directive');
 const rateLimit = require('express-rate-limit')
 const timeout = require('connect-timeout');
-const morgan = require('morgan');
 require('express-async-errors');
 
 if (!config.port) console.log("🟡 [WARN]: Port chưa được cung cấp, chạy port mặc định 8080".yellow)
@@ -52,12 +51,12 @@ const timeoutOptions = {
 const timeoutMiddleware = timeout(timeoutDuration, timeoutOptions);
 app.use(timeoutMiddleware);
 // (ví dụ: 'dev', 'combined', 'common', 'short', 'tiny')
-// const logFormat = 'combined';
-// const options = {
-//   stream: process.stdout,
-// };
-// const morganMiddleware = morgan(logFormat, options);
-// app.use(morganMiddleware);
+const logFormat = 'short';
+const options = {
+  stream: process.stdout,
+};
+const morganMiddleware = morgan(logFormat, options);
+app.use(morganMiddleware);
 
 
 const routes = readdirSync(join(__dirname, `Routes`)).filter(file => file.endsWith(".js"));
