@@ -4,7 +4,6 @@ const ejs = require("ejs");
 const { join } = require("path");
 const app = express();
 const session = require("express-session");
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { readdirSync } = require('fs');
 const config = require('./config.js');
@@ -23,10 +22,6 @@ if (!config.port) console.log("🟡 [WARN]: Port chưa được cung cấp, ch�
 app.set("view engine", "ejs");
 app.use("/", static(join(__dirname, ".", "public")));
 
-if (!config.uploadSizeLimit) return console.log("🔴 [ERROR]: Vui lòng cung cấp đầy đủ thông tin ở config.js".red)
-
-app.use(bodyParser.json({ limit: `${config.uploadSizeLimit}mb` }))
-app.use(bodyParser.urlencoded({ limit: `${config.uploadSizeLimit}mb`, extended: true }));
 
 app.use(cookieParser());
 app.use(
