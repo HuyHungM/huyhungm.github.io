@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= listType %> Anime - Anime Hub</title>
+  <!-- MATERIAL ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- STYLE -->
+  <link rel="shortcut icon" href="/assets/logo.png" type="png">
+  <link rel="stylesheet" href="/css/anime.css">
+  <link rel="stylesheet" href="/css/global.css">
+</head>
+<body onload="loaderFunction()">
+  <div class="loader">
+    <div class="loading">
+        <span></span>
+    </div>
+  </div>
+  <div class="container">
+    <div id="scroll-to-top">
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a class="logo" href="/">
+        <img src="/assets/logo.png">
+      </a>
+      <form class="search-bar">
+        <input type="text" id="search-input" placeholder="Search Anime" autocomplete="off" autocorrect="false" name="query">
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass icon"></i>
+        </button>
+      </form>
+      <ul class="item-list">
+        <li class="item">
+          <a href="/airing">Airing</a>
+        </li>
+        <li class="item">
+          <a href="/upcoming">Upcoming</a>
+        </li>
+        <li class="item">
+          <a href="/popular">Popular</a>
+        </li>
+        <li class="item">
+          <a href="/favorite">Favorite</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main">
+      <section class="main-part">
+        <div class="title">
+          <% if (listType.toLowerCase() === "search") { %>
+            <b>Search Result</b>
+          <% } else { %>
+            <b>All Time</b> <%= listType %>
+          <% } %>
+        </div>
+        <div class="center">
+          <div class="anime-list full-height">
+            <% for (var i = 0; i < 25; i++) { %>
+              <div class="anime-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="bottom">
+          <ul id="pagination"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="content">
+        <p>Anime Hub - All Rights Reversed. Made by <a href="https://github.com/HuyHungM">HuyHungM</a> with <span class="red">♥</spans></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/superagent@8.1.2/dist/superagent.min.js"></script>
+  <script>
+    let listType = "<%- listType %>"
+    let searchQuery = "<%- searchQuery %>"
+    let page = "<%- page %>"
+  </script>
+  <script src="/script/global.js"></script>
+  <script src="/script/animeList.js"></script>
+</body>
+</html>

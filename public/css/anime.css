@@ -1,0 +1,213 @@
+#main {
+  width: 100%;
+  min-height: calc(100% - 80px);
+  padding: 40px 60px 20px;
+  transition: all 600ms ease;
+}
+
+#main > section {
+  margin: 2.6rem 0;
+}
+
+#main button.read-more {
+  background: transparent;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ===== BASIC INFO ===== */
+#main .basic-info .center {
+  display: grid;
+  grid-template-columns: 350px auto;
+  gap: 2.6rem;
+}
+
+#main .basic-info .center > div {
+  border-radius: 0.8rem;
+}
+
+#main .basic-info .center > div.thumbnail {
+  background-color: transparent;
+}
+
+#main .basic-info .center > div .content,
+#main .basic-info .center .thumbnail img {
+  border-radius: 0.8rem;
+  background-color: #131313;
+}
+
+#main .basic-info .center .info .content {
+  padding: 2rem;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+#main .basic-info .center .info .content p {
+  margin: 5px 0;
+}
+
+/* ===== TRAILER - DESCRIPTION ===== */
+#main .trailer-description {
+  display: grid;
+  grid-template-columns: 600px auto;
+  gap: 2.6rem;
+}
+
+#main .trailer-description .trailer iframe {
+  border-radius: 0.8rem;
+  background-color: #131313;
+  padding: 1rem;
+}
+
+#main .trailer-description .description .content {
+  background-color: #131313;
+  height: auto;
+  width: 100%;
+  font-size: 17px;
+  padding: 2rem;
+  border-radius: 0.4rem;
+}
+
+#main .characters .character-list,
+#main .pictures .picture-list,
+#main .music-videos .music-video-list,
+#main .anime-list,
+#main .voice-actors .voice-actor-list {
+  overflow: auto;
+  width: 100%;
+  height: auto;
+  column-gap: 2.6rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#main .anime-list.full-height {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  row-gap: 2.6rem;
+}
+
+#main .characters .character-list::-webkit-scrollbar,
+#main .pictures .picture-list::-webkit-scrollbar,
+#main .music-videos .music-video-list::-webkit-scrollbar,
+#main .anime-list::-webkit-scrollbar,
+#main .voice-actors .voice-actor-list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #1f1e1e;
+}
+
+#main .pictures .picture-list::-webkit-scrollbar-thumb,
+#main .characters .character-list::-webkit-scrollbar-thumb,
+#main .music-videos .music-video-list::-webkit-scrollbar-thumb,
+#main .anime-list::-webkit-scrollbar-thumb,
+#main .voice-actors .voice-actor-list::-webkit-scrollbar-thumb {
+  background-color: rgb(130, 13, 13);
+  border-radius: 0;
+}
+
+#main .characters .character-list .character-item,
+#main .music-videos .music-video-list .music-video-item,
+#main .anime-list .anime-item,
+#main .voice-actors .voice-actor-list .voice-actor-item {
+  transition: all 400ms ease;
+  height: auto;
+  display: grid;
+  grid-template-rows: 280px auto;
+  row-gap: 6px;
+  width: 200px;
+}
+
+#main .anime-list.full-height .anime-item {
+  margin: 0 auto;
+}
+
+#main .pictures .picture-list .picture-item {
+  width: auto;
+  min-width: 200px;
+  margin-bottom: 15px;
+}
+
+#main .music-videos .music-video-list .music-video-item {
+  width: 600px;
+  grid-template-rows: 400px auto;
+}
+
+#main .characters .character-list .character-item a,
+#main .anime-list .anime-item a,
+#main .voice-actors .voice-actor-list .voice-actor-item a {
+  transition: all 300ms ease;
+}
+
+#main .characters .character-list .character-item .thumbnail,
+#main .anime-list .anime-item .thumbnail,
+#main .voice-actors .voice-actor-list .voice-actor-item .thumbnail {
+  width: 200px;
+  height: 280px;
+}
+
+#main .pictures .picture-list .picture-item .thumbnail {
+  height: 280px;
+}
+
+#main .music-videos .music-video-list .music-video-item .video-con {
+  height: 400px;
+  width: 600px;
+}
+
+#main .characters .character-list .character-item .thumbnail img,
+#main .pictures .picture-list .picture-item .thumbnail img,
+#main .anime-list .anime-item .thumbnail img,
+#main .voice-actors .voice-actor-list .voice-actor-item .thumbnail img,
+#main .music-videos .music-video-list .music-video-item .video-con iframe {
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+#main .characters .character-list .character-item .content,
+#main .music-videos .music-video-list .music-video-item .content,
+#main .anime-list .anime-item .content,
+#main .voice-actors .voice-actor-list .voice-actor-item .content {
+  margin: 0 0 10px;
+  height: fit-content;
+  font-size: 16px;
+}
+
+#main .characters .character-list .character-item .content small,
+#main .music-videos .music-video-list .music-video-item .content small,
+#main .anime-list .anime-item .content small,
+#main .voice-actors .voice-actor-list .voice-actor-item .content small {
+  font-size: 12px;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media screen and (max-width: 1100px) {
+
+  #main .basic-info .center,
+  #main .trailer-description {
+    grid-template-columns: 1fr;
+  }
+
+  #main .basic-info .center > div.thumbnail,
+  #main .trailer-description .trailer .trailer-con {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #main .basic-info .center > div.thumbnail .thumbnail-con {
+    width: 350px;
+  }
+
+  #main .trailer-description .trailer iframe {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 735px) {
+  #main {
+    padding: 20px;
+  }
+}

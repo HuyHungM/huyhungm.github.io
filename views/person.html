@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading - Anime Hub</title>
+  <!-- MATERIAL ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- STYLE -->
+  <link rel="shortcut icon" href="/assets/logo.png" type="png">
+  <link rel="stylesheet" href="/css/anime.css">
+  <link rel="stylesheet" href="/css/global.css">
+</head>
+<body onload="loaderFunction()">
+  <div class="loader">
+    <div class="loading">
+        <span></span>
+    </div>
+  </div>
+  <div class="container">
+    <div id="scroll-to-top">
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a class="logo" href="/">
+        <img src="/assets/logo.png">
+      </a>
+      <form class="search-bar">
+        <input type="text" id="search-input" placeholder="Search Anime" autocomplete="off" autocorrect="false">
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass icon"></i>
+        </button>
+      </form>
+      <ul class="item-list">
+        <li class="item">
+          <a href="/airing">Airing</a>
+        </li>
+        <li class="item">
+          <a href="/upcoming">Upcoming</a>
+        </li>
+        <li class="item">
+          <a href="/popular">Popular</a>
+        </li>
+        <li class="item">
+          <a href="/favorite">Favorite</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main">
+      <section class="basic-info">
+        <div class="small-title">
+          <b>
+            <a href="/">
+              <i class="fa-solid fa-house"></i>
+              Home
+            </a> 
+            / Person / 
+            <a class="person-top-title"></a>
+          </b>
+        </div>
+        <div class="center">
+          <div class="thumbnail">
+            <div class="thumbnail-con">
+              <img src="/assets/loading-thumbnail.png" alt="loading">
+            </div>
+          </div>
+          <div class="info">
+            <div class="content">
+              <p class="person-name"><b>Name:</b> Loading...</p>
+              <p class="person-alternative-names"><b>Alternative Names:</b> Loading...</p>
+              <p class="person-birthday"><b>Birthday:</b> Loading...</p>
+              <p class="person-favorites"><b>Favorites:</b> Loading...</p>
+              <p class="person-website"><b>Website:</b> Loading...</p>
+              <p class="person-about"><b>About:</b> Loading...</p>
+              <br>
+              <p class="person-link"><b>Link:</b> Loading...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END OF BASIC INFO -->
+
+      <section class="anime">
+        <div class="title">
+          <b>Anime</b>
+        </div>
+        <div class="center">
+          <div class="anime-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="anime-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                  <br>
+                  <small class="text-muted"></small>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF ANIME -->
+
+      <section class="characters">
+        <div class="title">
+          <b>Characters</b>
+        </div>
+        <div class="center">
+          <div class="character-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="character-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                  <br>
+                  <small class="text-muted"></small>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF CHARACTERS -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="content">
+        <p>Anime Hub - All Rights Reversed. Made by <a href="https://github.com/HuyHungM">HuyHungM</a> with <span class="red">♥</spans></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/superagent@8.1.2/dist/superagent.min.js"></script>
+  <script>
+    let personID = "<%= personID %>"
+  </script>
+  <script src="/script/global.js"></script>
+  <script src="/script/person.js"></script>
+</body>
+</html>

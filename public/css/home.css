@@ -1,0 +1,105 @@
+/* ========== MAIN ========== */
+#main {
+  width: 100%;
+  min-height: calc(100% - 80px);
+  padding: 20px 60px;
+  transition: all 600ms ease;
+}
+
+#main > section {
+  margin: 50px 0;
+  position: relative;
+}
+
+#main > section .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+#main > section .anime-list {
+  display: grid;
+  overflow: auto;
+  width: 100%;
+  height: auto;
+  column-gap: 2.6rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#main > section .anime-list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #1f1e1e;
+}
+
+#main > section .anime-list::-webkit-scrollbar-thumb {
+  background-color: rgb(130, 13, 13);
+  border-radius: 0;
+}
+
+#main > section .anime-list .anime-item {
+  transition: all 400ms ease;
+  height: auto;
+  display: grid;
+  grid-template-rows: 280px auto;
+  row-gap: 6px;
+  width: 200px;
+}
+
+#main > section .anime-list .anime-item a {
+  transition: all 300ms ease;
+}
+
+#main > section .anime-list .anime-item .thumbnail {
+  width: 200px;
+  height: 280px;
+}
+
+#main > section .anime-list .anime-item .thumbnail img {
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+#main > section .anime-list .anime-item .content {
+  margin: 0 0 10px;
+  height: fit-content;
+}
+
+/* ===== RECOMMENDED ANIME ===== */
+#main .recommend a {
+  transition: all 400ms ease;
+}
+
+#main .recommend .center {
+  position: relative;
+  width: 100%;
+  height: 350px;
+}
+
+#main .recommend .center .thumbnail {
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+#main .recommend .center .content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: flex-end;
+  padding: 15px 20px;
+  box-shadow: 0rem -3rem 3rem #010101 inset;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  font-weight: 700
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media screen and (max-width: 650px) {
+
+  #main {
+    padding: 20px;
+  }
+}

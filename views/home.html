@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Hub</title>
+  <!-- MATERIAL ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- STYLE -->
+  <link rel="shortcut icon" href="/assets/logo.png" type="png">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/global.css">
+</head>
+<body onload="loaderFunction()">
+  <div class="loader">
+    <div class="loading">
+        <span></span>
+    </div>
+  </div>
+  <div class="container">
+    <div id="scroll-to-top">
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a class="logo" href="/">
+        <img src="/assets/logo.png">
+      </a>
+      <form class="search-bar">
+        <input type="text" id="search-input" placeholder="Search Anime" autocomplete="off" autocorrect="false">
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass icon"></i>
+        </button>
+      </form>
+      <ul class="item-list">
+        <li class="item">
+          <a href="/airing">Airing</a>
+        </li>
+        <li class="item">
+          <a href="/upcoming">Upcoming</a>
+        </li>
+        <li class="item">
+          <a href="/popular">Popular</a>
+        </li>
+        <li class="item">
+          <a href="/favorite">Favorite</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main">
+      <section class="recommend">
+        <div class="title">
+          <b>Recommended</b> to you
+        </div>
+        <a>
+          <div class="center">
+            <img src="/assets/loading-thumbnail.png" alt="loading" class="thumbnail">
+            <div class="content">
+              <span class="name"></span>
+            </div>
+          </div>
+        </a>
+      </section>
+      <!-- END OF RECOMMEND -->
+
+      <section class="popular">
+        <div class="top">
+          <div class="title">
+            <b>All Time</b> Popular
+          </div>
+          <a class="expand underline" href="/popular">View All</a>
+        </div>
+        <div class="center">
+          <div class="anime-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="anime-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF POPULAR -->
+
+      <section class="upcoming">
+        <div class="top">
+          <div class="title">
+            <b>All Time</b> Upcoming
+          </div>
+          <a class="expand underline" href="/upcoming">View All</a>
+        </div>
+        <div class="center">
+          <div class="anime-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="anime-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF UPCOMING -->
+
+      <section class="airing">
+        <div class="top">
+          <div class="title">
+            <b>All Time</b> Airing
+          </div>
+          <a class="expand underline" href="/airing">View All</a>
+        </div>
+        <div class="center">
+          <div class="anime-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="anime-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF AIRING -->
+
+      <section class="favorite">
+        <div class="top">
+          <div class="title">
+            <b>All Time</b> Favorite
+          </div>
+          <a class="expand underline" href="/favorite">View All</a>
+        </div>
+        <div class="center">
+          <div class="anime-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="anime-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF FAVORITE -->
+    </main>
+    
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="content">
+        <p>Anime Hub - All Rights Reversed. Made by <a href="https://github.com/HuyHungM">HuyHungM</a> with <span class="red">♥</spans></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/superagent@8.1.2/dist/superagent.min.js"></script>
+  <script src="/script/global.js"></script>
+  <script src="/script/home.js"></script>
+</body>
+</html>

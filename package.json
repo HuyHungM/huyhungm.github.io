@@ -1,0 +1,40 @@
+{
+  "name": "Anime-Hub",
+  "version": "1.0.0",
+  "description": "A Anime Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "babel rawscript -d views/script"
+  },
+  "author": "HuyHungM",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "colors": "^1.4.0",
+    "compression": "^1.7.4",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
+    "dom-parser": "^0.1.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-cache-response-directive": "^1.1.0",
+    "express-rate-limit": "^6.9.0",
+    "express-session": "^1.17.3",
+    "helmet": "^7.0.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "morgan": "^1.10.0",
+    "npm": "^9.8.1",
+    "raw-body": "^2.5.2",
+    "string-similarity": "^4.0.4",
+    "superagent": "^8.1.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.10"
+  }
+}

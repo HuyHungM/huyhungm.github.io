@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading - Anime Hub</title>
+  <!-- MATERIAL ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- STYLE -->
+  <link rel="shortcut icon" href="/assets/logo.png" type="png">
+  <link rel="stylesheet" href="/css/anime.css">
+  <link rel="stylesheet" href="/css/global.css">
+</head>
+<body onload="loaderFunction()">
+  <div class="loader">
+    <div class="loading">
+        <span></span>
+    </div>
+  </div>
+  <div class="container">
+    <div id="scroll-to-top">
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a class="logo" href="/">
+        <img src="/assets/logo.png">
+      </a>
+      <form class="search-bar">
+        <input type="text" id="search-input" placeholder="Search Anime" autocomplete="off" autocorrect="false">
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass icon"></i>
+        </button>
+      </form>
+      <ul class="item-list">
+        <li class="item">
+          <a href="/airing">Airing</a>
+        </li>
+        <li class="item">
+          <a href="/upcoming">Upcoming</a>
+        </li>
+        <li class="item">
+          <a href="/popular">Popular</a>
+        </li>
+        <li class="item">
+          <a href="/favorite">Favorite</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main">
+      <section class="basic-info">
+        <div class="small-title">
+          <b>
+            <a href="/">
+              <i class="fa-solid fa-house"></i>
+              Home
+            </a> 
+            / Producer / 
+            <a class="producer-top-title"></a>
+          </b>
+        </div>
+        <div class="center">
+          <div class="thumbnail">
+            <div class="thumbnail-con">
+              <img src="/assets/loading-thumbnail.png" alt="loading">
+            </div>
+          </div>
+          <div class="info">
+            <div class="content">
+              <p class="producer-title"><b>Title:</b> Loading...</p>
+              <p class="producer-alternative-titles"><b>Alternative Titles:</b> Loading...</p>
+              <p class="producer-anime-count"><b>Anime Count:</b> Loading...</p>
+              <p class="producer-favorites"><b>Favorites:</b> Loading...</p>
+              <p class="producer-established"><b>Established:</b>Loading...</p>
+              <p class="producer-external"><b>External:</b> Loading...</p>
+              <p class="producer-about"><b>About:</b> Loading...</p>
+              <br>
+              <p class="producer-link"><b>Link:</b> Loading...></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END OF BASIC INFO -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="content">
+        <p>Anime Hub - All Rights Reversed. Made by <a href="https://github.com/HuyHungM">HuyHungM</a> with <span class="red">♥</spans></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/superagent@8.1.2/dist/superagent.min.js"></script>
+  <script>
+    let producerID = "<%= producerID %>"
+  </script>
+  <script src="/script/global.js"></script>
+  <script src="/script/producer.js"></script>
+</body>
+</html>

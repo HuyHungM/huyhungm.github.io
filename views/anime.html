@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading - Anime Hub</title>
+  <!-- MATERIAL ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- STYLE -->
+  <link rel="shortcut icon" href="/assets/logo.png" type="png">
+  <link rel="stylesheet" href="/css/anime.css">
+  <link rel="stylesheet" href="/css/global.css">
+</head>
+<body onload="loaderFunction()">
+  <div class="loader">
+    <div class="loading">
+        <span></span>
+    </div>
+  </div>
+  <div class="container">
+    <div id="scroll-to-top">
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a class="logo" href="/">
+        <img src="/assets/logo.png">
+      </a>
+      <form class="search-bar">
+        <input type="text" id="search-input" placeholder="Search Anime" autocomplete="off" autocorrect="false">
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass icon"></i>
+        </button>
+      </form>
+      <ul class="item-list">
+        <li class="item">
+          <a href="/airing">Airing</a>
+        </li>
+        <li class="item">
+          <a href="/upcoming">Upcoming</a>
+        </li>
+        <li class="item">
+          <a href="/popular">Popular</a>
+        </li>
+        <li class="item">
+          <a href="/favorite">Favorite</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main">
+      <section class="basic-info">
+        <div class="small-title">
+          <b>
+            <a href="/">
+              <i class="fa-solid fa-house"></i>
+              Home
+            </a> 
+            / Anime / 
+            <a class="anime-top-title"></a>
+          </b>
+        </div>
+        <div class="center">
+          <div class="thumbnail">
+            <div class="thumbnail-con">
+              <img src="/assets/loading-thumbnail.png" alt="">
+            </div>
+          </div>
+          <div class="info">
+            <div class="content">
+              <p class="anime-title"><b>Title:</b> Loading...</p>
+              <p class="anime-alternative-title"><b>Alternative Title:</b> Loading...</p>
+              <p class="anime-score"><b>Score:</b> Loading...</p>
+              <p class="anime-duration"><b>Duration:</b> Loading...</p>
+              <p class="anime-episodes"><b>Episodes:</b> Loading...</p>
+              <p class="anime-rating"><b>Rating:</b> Loading...</p>
+              <p class="anime-rank"><b>Rank:</b> Loading...</p>
+              <p class="anime-season"><b>Season:</b> Loading...</p>
+              <p class="anime-type"><b>Type:</b> Loading...</p>
+              <p class="anime-source"><b>Source:</b> Loading...</p>
+              <p class="anime-favorites"><b>Favorites:</b> Loading...</p>
+              <p class="anime-status"><b>Status:</b> Loading...</p>
+              <p class="anime-aired"><b>Aired:</b> Loading...</p>
+              <p class="anime-studios"><b>Studios:</b> </p>
+              <p class="anime-relations"><b>Relations:</b> </p>
+              <br>
+              <p class="anime-link"><b>Link:</b></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END OF BASIC INFO -->
+
+      <section class="trailer-description">
+        <div class="trailer">
+          <div class="title">
+            <b>Trailer</b>
+          </div>
+          <div class="trailer-con"></div>
+        </div>
+        <div class="description">
+          <div class="title">
+            <b>Description</b>
+          </div>
+          <div class="content">
+            <p></p>
+          </div>
+        </div>
+      </section>
+      <!-- END OF TRAILER - DESCRIPTION -->
+
+      <section class="characters">
+        <div class="title">
+          <b>Characters</b>
+        </div>
+        <div class="center">
+          <div class="character-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="character-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                  <br>
+                  <small class="text-muted"></small>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF CHARACTERS -->
+
+      <section class="pictures">
+        <div class="title">
+          <b>Pictures</b>
+        </div>
+        <div class="center">
+          <div class="picture-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="picture-item">
+                <div class="thumbnail">
+                  <img src="/assets/loading-thumbnail.png" alt="loading">
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF PICTURES -->
+
+      <section class="music-videos">
+        <div class="title">
+          <b>Openings - Endings</b>
+        </div>
+        <div class="center">
+          <div class="music-video-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="music-video-item">
+                <div class="video-con"></div>
+                <div class="content">
+                  <span class="name"></span>
+                  <br>
+                  <small class="text-muted"></small>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF MUSIC VIDEOS -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="content">
+        <p>Anime Hub - All Rights Reversed. Made by <a href="https://github.com/HuyHungM">HuyHungM</a> with <span class="red">♥</spans></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/superagent@8.1.2/dist/superagent.min.js"></script>
+  <script>
+    const animeID = "<%- animeID %>"
+  </script>
+  <script src="/script/global.js"></script>
+  <script src="/script/anime.js"></script>
+</body>
+</html>
