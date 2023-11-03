@@ -12,7 +12,7 @@ $(document).ready(async function() {
 
 function loadCharacterInfo(character) {
   $("title").text(`${character.name} - Anime Hub`)
-  $(".character-top-title").attr("href", `/anime/${character.mal_id}`).text(character.name)
+  $(".character-top-title").attr("href", `/character/${character.mal_id}`).text(character.name)
 
   $(".basic-info .thumbnail-con img").attr("src", `${character.images?.jpg?.large_image_url ? character.images?.jpg?.large_image_url : character.images?.jpg?.image_url}`).attr("alt", character.name)
 
@@ -34,7 +34,7 @@ function loadCharacterInfo(character) {
     })
   }
   
-  $(".basic-info .info .content .character-link").html(`<b>Link:</b> <a href="${character.url}" class="link"> MyAnimeList</a>`)
+  $(".basic-info .info .content .character-link").html(`<b>Link:</b> <a href="${character.url}" class="link">MyAnimeList</a>`)
 }
 
 function loadAnime(animeList, address) {

@@ -3,6 +3,10 @@ $(document).ready( async function() {
   recommendedAnime = recommendedAnime.body?.data[0]?.entry[0];
   loadRecommendAnime(recommendedAnime)
 
+  let thisSeasonAnime = await superagent.get("https://api.jikan.moe/v4/seasons/now");
+  thisSeasonAnime = thisSeasonAnime.body?.data;
+  loadAnime(thisSeasonAnime, ".this-season .anime-list")
+
   let popularAnime = await superagent.get("https://api.jikan.moe/v4/top/anime?filter=bypopularity&page=1&limit=15")
   popularAnime = popularAnime.body?.data
   loadAnime(popularAnime, ".popular .anime-list")

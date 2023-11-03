@@ -65,6 +65,34 @@
       </section>
       <!-- END OF RECOMMEND -->
 
+      <section class="this-season">
+        <div class="top">
+          <div class="title">
+            <b>Airing Now</b>
+          </div>
+          <a class="expand underline" href="/seasonnow">View All</a>
+        </div>
+        <div class="center">
+          <div class="anime-list">
+            <% for (var i = 0; i < 15; i++) { %>
+              <div class="anime-item">
+                <a>
+                  <div class="thumbnail">
+                    <img src="/assets/loading-thumbnail.png" alt="loading">
+                  </div>
+                </a>
+                <div class="content">
+                  <a>
+                    <span class="name"></span>
+                  </a>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- END OF POPULAR -->
+      
       <section class="popular">
         <div class="top">
           <div class="title">

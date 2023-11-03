@@ -47,5 +47,5 @@ function loadProducerInfo(producer) {
     })
   }
   
-  $(".basic-info .info .content .producer-link").html(`<b>Link:</b> <a href="${producer.url}" class="link"> MyAnimeList</a>`)
+  $(".basic-info .info .content .producer-link").html(`<b>Link:</b> <a href="${producer.url}" class="link">MyAnimeList</a>`)
 }

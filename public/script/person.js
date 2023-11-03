@@ -38,7 +38,7 @@ function loadPersonInfo(person) {
     })
   }
   
-  $(".basic-info .info .content .person-link").html(`<b>Link:</b> <a href="${person.url}" class="link"> MyAnimeList</a>`)
+  $(".basic-info .info .content .person-link").html(`<b>Link:</b> <a href="${person.url}" class="link">MyAnimeList</a>`)
 }
 
 function loadAnime(animeList, address) {

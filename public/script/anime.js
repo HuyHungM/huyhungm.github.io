@@ -9,20 +9,20 @@ $(document).ready(async function() {
       characters = characters.body?.data;
       loadCharacter(characters, ".characters .character-list")
     }, 1000)
-  
+
     setTimeout(async function() {
       let pictures = await superagent.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
       pictures = pictures.body?.data
       loadPicture(anime, pictures, ".pictures .picture-list")
     }, 2000)
-  
+
     setTimeout(async function() {
       let musicVideos = await superagent.get(`https://api.jikan.moe/v4/anime/${animeID}/videos`)
       musicVideos = musicVideos.body?.data.music_videos
       loadMusicVideo(anime, musicVideos, ".music-videos .music-video-list")
     }, 3000)
 
-  } catch(e) {
+  } catch (e) {
     location.href = "/404"
   }
 })
@@ -36,11 +36,12 @@ function loadAnimeInfo(anime) {
   $(".basic-info .info .content .anime-title").html(`<b>Title: </b>${anime.title}`)
   $(".basic-info .info .content .anime-alternative-title").html(`<b>Alternative Title: </b>${(anime.titles.length > 0) ? anime.titles.map((x) => x.title).join("; ") : "None"}`)
   $(".basic-info .info .content .anime-score").html(`<b>Score: </b>${anime.score ? anime.score.toLocaleString("vi-VN") : "None"}`)
+  $(".basic-info .info .content .anime-scored-by").html(`<b>Scored by: </b>${anime.scored_by ? anime.scored_by.toLocaleString("vi-VN") : `None`}`)
+  $(".basic-info .info .content .anime-rank").html(`<b>Rank: </b>${anime.rank ? `#${anime.rank.toLocaleString("vi-VN")}` : "None"}`)
   $(".basic-info .info .content .anime-duration").html(`<b>Duration: </b>${anime.duration ? anime.duration : "None"}`)
   $(".basic-info .info .content .anime-episodes").html(`<b>Episodes: </b>${anime.episodes ? anime.episodes : "None"}`)
   $(".basic-info .info .content .anime-rating").html(`<b>Rating: </b>${anime.rating ? anime.rating.replace(/\b\w/g, (match) => match.toUpperCase()) : "None"}`)
-  $(".basic-info .info .content .anime-rank").html(`<b>Rank: </b>${anime.rank ? anime.rank.toLocaleString("vi-VN") : "None"}`)
-  $(".basic-info .info .content .anime-season").html(`<b>Season: </b>${anime.season ? anime.season.replace(/\b\w/g, (match) => match.toUpperCase()) : "None"}`)
+  $(".basic-info .info .content .anime-season").html(`<b>Season: </b>${anime.season ? anime.season.replace(/\b\w/g, (match) => match.toUpperCase()) : "None"}${anime.year ? ` - ${anime.year}` : ``}`)
   $(".basic-info .info .content .anime-type").html(`<b>Type: </b>${anime.type ? anime.type : "None"}`)
   $(".basic-info .info .content .anime-source").html(`<b>Source: </b>${anime.source ? anime.source : "None"}`)
   $(".basic-info .info .content .anime-favorites").html(`<b>Favorites: </b>${anime.favorites ? anime.favorites.toLocaleString("vi-VN") : "None"}`)
@@ -66,13 +67,13 @@ function loadAnimeInfo(anime) {
   } else {
     $(".basic-info .info .content .anime-relations").html(`<b>Relations: </b>None`)
   }
-  $(".basic-info .info .content .anime-link").html(`<b>Link:</b> <a href="${anime.url}" class="link"> MyAnimeList</a>`)
+  $(".basic-info .info .content .anime-link").html(`<b>Link:</b> <a href="${anime.url}" class="link">MyAnimeList</a>`)
 
   //Trailer
-  $(document.createElement("iframe")).attr("src", `${anime.trailer?.embed_url ?anime.trailer?.embed_url : 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'}`).attr("title", anime.title).attr("width", "600").attr("height", "400").attr("allow", "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture").attr("allowFullScreen", true).appendTo(".trailer .trailer-con")
+  $(document.createElement("iframe")).attr("src", `${anime.trailer?.embed_url ? anime.trailer?.embed_url : 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'}`).attr("title", anime.title).attr("width", "600").attr("height", "400").attr("allow", "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture").attr("allowFullScreen", true).appendTo(".trailer .trailer-con")
 
   //Description
-  $(".description .content p").html(anime.synopsis ? `${anime.synopsis?.substring(0, 450).replace(/\n/g, '<br>')}${anime.synopsis?.length > 450 ? "..." : ""}`  : "None")
+  $(".description .content p").html(anime.synopsis ? `${anime.synopsis?.substring(0, 450).replace(/\n/g, '<br>')}${anime.synopsis?.length > 450 ? "..." : ""}` : "None")
 
   if (anime.synopsis?.length > 450) {
     let readMoreBtn = $(document.createElement("button")).addClass("read-more").text("Read More")

@@ -131,6 +131,34 @@ app.get("/producer/:id", async (req, res) => {
   }
 });
 
+app.get("/seasonnow", async (req, res) => {
+
+  try {
+
+    let page = req.query.page || 1;
+
+    let listType = "Airing Now"
+    let searchQuery = null
+
+    ejs.renderFile(join(__dirname, "..", "views", "animeList.html"), { listType, searchQuery, page }, (err, html) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(html);
+      }
+    });
+  } catch (e) {
+    console.log(e)
+    ejs.renderFile(join(__dirname, "..", "views", "404.html"), (err, html) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(html);
+      }
+    });
+  }
+});
+
 app.get("/popular", async (req, res) => {
 
   try {

@@ -3,7 +3,8 @@ $(document).ready(async function() {
   let Link = "https://api.jikan.moe/v4/top/anime";
   listType = listType.toLowerCase()
 
-  if (listType === "popular") Link = `https://api.jikan.moe/v4/top/anime?filter=bypopularity&page=${page}&limit=25`
+  if (listType === "airing now") Link = `https://api.jikan.moe/v4/seasons/now?page=${page}&limit=25`
+  else if (listType === "popular") Link = `https://api.jikan.moe/v4/top/anime?filter=bypopularity&page=${page}&limit=25`
   else if (listType === "airing") Link = `https://api.jikan.moe/v4/top/anime?filter=airing&page=${page}&limit=25`
   else if (listType === "upcoming") Link = `https://api.jikan.moe/v4/top/anime?filter=upcoming&page=${page}&limit=25`
   else if (listType === "favorite") Link = `https://api.jikan.moe/v4/top/anime?filter=favorite&page=${page}&limit=25`
