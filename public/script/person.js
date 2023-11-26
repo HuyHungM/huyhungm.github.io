@@ -42,14 +42,14 @@ function loadPersonInfo(person) {
 }
 
 function loadAnime(animeList, address) {
-  $(`${address}`).html("")
+  $(address).html("")
 
   animeList.forEach((data) => {
 
     let enter = $(document.createElement("br"))
 
     let animeItem = $(document.createElement("div")).addClass("anime-item")
-    $(`${address}`).append(animeItem)
+    $(address).append(animeItem)
 
     let animeLinkThumbnail = $(document.createElement("a")).attr("href", `/anime/${data.anime.mal_id}`)
     $(animeItem).append(animeLinkThumbnail)
@@ -83,7 +83,7 @@ function loadAnimeVoice(animeList, address) {
     let enter = $(document.createElement("br"))
 
     let animeItem = $(document.createElement("div")).addClass("anime-item")
-    $(`${address}`).append(animeItem)
+    $(address).append(animeItem)
 
     let animeLinkThumbnail = $(document.createElement("a")).attr("href", `/anime/${data.anime.mal_id}`)
     $(animeItem).append(animeLinkThumbnail)
@@ -111,14 +111,14 @@ function loadAnimeVoice(animeList, address) {
 }
 
 function loadCharacter(characterList, address) {
-  $(`${address}`).html("")
+  $(address).html("")
   
   characterList.forEach((data) => {
 
     let enter = $(document.createElement("br"))
 
     let characterItem = $(document.createElement("div")).addClass("character-item")
-    $(`${address}`).append(characterItem)
+    $(address).append(characterItem)
 
     let characterLinkThumbnail = $(document.createElement("a")).attr("href", `/character/${data.character.mal_id}`)
     $(characterItem).append(characterLinkThumbnail)

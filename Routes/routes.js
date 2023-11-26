@@ -1,8 +1,6 @@
 const ejs = require("ejs");
 const app = require("express").Router();
 const { join } = require("path");
-const stringSimilarity = require('string-similarity');
-const superagent = require('superagent');
 
 app.get("/", async (req, res) => {
 

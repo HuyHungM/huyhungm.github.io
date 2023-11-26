@@ -51,12 +51,14 @@
     <!-- MAIN -->
     <main id="main">
       <section class="main-part">
-        <div class="title">
-          <% if (listType.toLowerCase() === "search") { %>
-            <b>Search Result</b>
-          <% } else { %>
-            <b>All Time</b> <%= listType %>
-          <% } %>
+        <div class="top">
+          <div class="title">
+            <% if (listType.toLowerCase() === "search") { %>
+              <b>Search Result</b>
+            <% } else { %>
+              <b>All Time</b> <%= listType %>
+            <% } %>
+          </div>
         </div>
         <div class="center">
           <div class="anime-list full-height">

@@ -1,4 +1,4 @@
-$(document).ready( async function() {
+$(document).ready(async function() {
   let recommendedAnime = await superagent.get("https://api.jikan.moe/v4/recommendations/anime?page=1");
   recommendedAnime = recommendedAnime.body?.data[0]?.entry[0];
   loadRecommendAnime(recommendedAnime)
@@ -31,11 +31,11 @@ $(document).ready( async function() {
 })
 
 function loadAnime(animeList, address) {
-  $(`${address}`).html("")
+  $(address).html("")
 
   animeList.forEach((anime) => {
     let animeItem = $(document.createElement("div")).addClass("anime-item")
-    $(`${address}`).append(animeItem)
+    $(address).append(animeItem)
 
     let animeLinkThumbnail = $(document.createElement("a")).attr("href", `/anime/${anime.mal_id}`)
     $(animeItem).append(animeLinkThumbnail)
@@ -60,7 +60,9 @@ function loadAnime(animeList, address) {
 function loadRecommendAnime(anime) {
   $(".recommend").html("")
 
-  $(document.createElement("div")).addClass("title").html("<b>Recommended</b> to you").appendTo(".recommend")
+  let recommendTop = $(document.createElement("div")).addClass("top").appendTo(".recommend")
+
+  $(document.createElement("div")).addClass("title").html("<b>Recommended</b> to you").appendTo(recommendTop)
 
   let animeLink = $(document.createElement("a")).attr('href', `/anime/${anime?.mal_id}`)
   $(".recommend").append(animeLink)

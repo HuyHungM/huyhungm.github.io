@@ -8,7 +8,10 @@ $(document).ready(async function() {
   else if (listType === "airing") Link = `https://api.jikan.moe/v4/top/anime?filter=airing&page=${page}&limit=25`
   else if (listType === "upcoming") Link = `https://api.jikan.moe/v4/top/anime?filter=upcoming&page=${page}&limit=25`
   else if (listType === "favorite") Link = `https://api.jikan.moe/v4/top/anime?filter=favorite&page=${page}&limit=25`
-  else if (listType === "search") Link = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(searchQuery)}&page=${page}&limit=25`
+  else if (listType === "search") {
+    Link = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(searchQuery)}&page=${page}&limit=25`
+    $("#search-input").val(searchQuery)
+  }
 
   let animeList = await superagent.get(Link)
   let pagination = animeList.body?.pagination
@@ -19,11 +22,17 @@ $(document).ready(async function() {
 })
 
 function loadAnime(animeList, address) {
-  $(`${address}`).html("")
+
+  if (animeList.length === 0) {
+    $(document.createElement("div")).addClass("no-anime").text("No Anime Found").appendTo(`.${$(address).parent().attr("class").split(" ").join(".")}`)
+    return $(address).remove()
+  }
+
+  $(address).html("")
 
   animeList.forEach((anime) => {
     let animeItem = $(document.createElement("div")).addClass("anime-item")
-    $(`${address}`).append(animeItem)
+    $(address).append(animeItem)
 
     let animeLinkThumbnail = $(document.createElement("a")).attr("href", `/anime/${anime.mal_id}`)
     $(animeItem).append(animeLinkThumbnail)

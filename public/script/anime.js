@@ -88,14 +88,14 @@ function loadAnimeInfo(anime) {
 }
 
 function loadCharacter(characterList, address) {
-  $(`${address}`).html("")
+  $(address).html("")
 
   characterList.forEach((data) => {
 
     let enter = $(document.createElement("br"))
 
     let characterItem = $(document.createElement("div")).addClass("character-item")
-    $(`${address}`).append(characterItem)
+    $(address).append(characterItem)
 
     let characterLinkThumbnail = $(document.createElement("a")).attr("href", `/character/${data.character.mal_id}`)
     $(characterItem).append(characterLinkThumbnail)
@@ -123,13 +123,13 @@ function loadCharacter(characterList, address) {
 }
 
 function loadPicture(anime, pictureList, address) {
-  if (pictureList?.length === 0) return $(`${address}`).parent().parent().remove()
-  $(`${address}`).html("")
+  if (pictureList?.length === 0) return $(address).parent().parent().remove()
+  $(address).html("")
 
   pictureList.forEach((picture) => {
 
     let pictureItem = $(document.createElement("div")).addClass("picture-item")
-    $(`${address}`).append(pictureItem)
+    $(address).append(pictureItem)
 
     let pictureThumbnail = $(document.createElement("div")).addClass("thumbnail")
     $(pictureItem).append(pictureThumbnail)
@@ -140,15 +140,15 @@ function loadPicture(anime, pictureList, address) {
 }
 
 function loadMusicVideo(anime, musicVideoList, address) {
-  if (musicVideoList?.length === 0) return $(`${address}`).parent().parent().remove()
-  $(`${address}`).html("")
+  if (musicVideoList?.length === 0) return $(address).parent().parent().remove()
+  $(address).html("")
 
   musicVideoList.forEach((data) => {
 
     let enter = $(document.createElement("br"))
 
     let musicVideoItem = $(document.createElement("div")).addClass("music-video-item")
-    $(`${address}`).append(musicVideoItem)
+    $(address).append(musicVideoItem)
 
     let videoContainer = $(document.createElement("div")).addClass("video-con")
     $(musicVideoItem).append(videoContainer)
