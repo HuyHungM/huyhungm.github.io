@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "babel rawscript -d views/script"
   },
   "author": "HuyHungM",
   "license": "ISC",
