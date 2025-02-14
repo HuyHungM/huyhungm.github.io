@@ -201,7 +201,7 @@
         });
 
         const poolSize = 40;
-        const duration = 15000;
+        const duration = 12000;
 
         function animateHeart($heart) {
           const startX = Math.random() * 100;
@@ -218,7 +218,7 @@
           $heart[0].offsetWidth;
 
           $heart.css({
-            transition: `left ${duration}ms ease, top ${duration}ms ease, opacity ${duration}ms ease`,
+            transition: `left ${duration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275), top ${duration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity ${duration}ms ease`,
           });
 
           setTimeout(() => {
@@ -229,7 +229,7 @@
             });
           }, 50);
 
-          setTimeout(() => animateHeart($heart), duration - 1000);
+          setTimeout(() => animateHeart($heart), duration - 2000);
         }
 
         function createHeart() {
