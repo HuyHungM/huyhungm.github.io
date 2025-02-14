@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to my love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        user-select: none;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        font-family: "Lobster", serif;
+        background: black;
+      }
+
+      #container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: black;
+        transition: background 500ms ease;
+      }
+
+      #flower-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      #q-container,
+      #a-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        z-index: 10;
+      }
+
+      #q-container h1 {
+        color: rgb(254, 169, 183);
+      }
+
+      #a-container {
+        display: none;
+        opacity: 0;
+        animation: fade2 800ms ease forwards;
+      }
+
+      #q-container .content,
+      #a-container .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        text-align: center;
+      }
+
+      #a-container h1 {
+        color: rgb(255, 85, 113);
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 16px;
+      }
+
+      .btn {
+        border-radius: 8px;
+        padding: 8px 24px;
+        background-color: rgb(255, 96, 154);
+        cursor: pointer;
+        transition: all 300ms ease;
+        color: white;
+      }
+
+      .btn:hover {
+        box-shadow: 0px 2px 10px rgb(255, 71, 181);
+      }
+
+      .hide {
+        animation: fade_hide 0.6s ease forwards;
+      }
+
+      @keyframes fade_hide {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes fade2 {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      i {
+        position: absolute;
+        font-size: 26px;
+        color: red;
+        text-shadow: 0px 0px 10px red;
+        opacity: 0;
+        animation: fade 2s ease forwards;
+        transition: all 12s ease-in-out;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 0.4;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="q-container">
+        <div class="content">
+          <img
+            src="https://media.tenor.com/71u5Jfc8RsQAAAAC/milk-and-mocha-bears.gif"
+            alt="hug"
+          />
+          <h1>
+            Em sẽ cùng dành trọn cả ngày cùng anh trong ngày Valentine chứ :3?
+          </h1>
+        </div>
+        <div class="btn-group">
+          <div id="yes-btn" class="btn">Đồng ý</div>
+          <div id="no-btn" class="btn">Từ chối</div>
+        </div>
+      </div>
+      <div id="a-container">
+        <div class="content">
+          <img
+            src="https://media.tenor.com/uKFCBnAq02MAAAAM/love.gif"
+            alt="love"
+          />
+          <h1>hihi anhh biett emm sẽ dongg ý maaa :>></h1>
+        </div>
+      </div>
+      <div id="flower-container"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script>
+      $(function () {
+        const $qContainer = $("#q-container");
+        const $aContainer = $("#a-container");
+        const $container = $("#container");
+        const $noBtn = $("#no-btn");
+        const $yesBtn = $("#yes-btn");
+        const $flowerContainer = $("#flower-container");
+
+        $noBtn.on("mouseenter", function () {
+          const x = Math.random() * 95 - 50;
+          const y = Math.random() * 80 - 50;
+          $(this).css("transform", `translate(${x}vw, ${y}vh)`);
+        });
+
+        $yesBtn.on("click", function () {
+          $qContainer.addClass("hide");
+          $container.css("background", `rgb(255, 175, 188)`);
+          setTimeout(() => {
+            $aContainer.css("display", "flex");
+            $qContainer.remove();
+          }, 600);
+          createHeart();
+          heartInHeart();
+        });
+
+        const poolSize = 40;
+        const duration = 15000;
+
+        function animateHeart($heart) {
+          const startX = Math.random() * 100;
+          const startY = Math.random() * 100;
+          const endX = Math.random() * 100;
+          const endY = Math.random() * 100;
+
+          $heart.css({
+            left: `${startX}vw`,
+            top: `${startY}vh`,
+            opacity: 0.4,
+          });
+
+          $heart[0].offsetWidth;
+
+          $heart.css({
+            transition: `left ${duration}ms ease, top ${duration}ms ease, opacity ${duration}ms ease`,
+          });
+
+          setTimeout(() => {
+            $heart.css({
+              left: `${endX}vw`,
+              top: `${endY}vh`,
+              opacity: 0,
+            });
+          }, 50);
+
+          setTimeout(() => animateHeart($heart), duration);
+        }
+
+        function createHeart() {
+          for (let i = 0; i < poolSize; i++) {
+            const $heart = $("<i>").addClass("fa-solid fa-heart");
+            $flowerContainer.append($heart);
+            animateHeart($heart);
+          }
+        }
+
+        function heartInHeart() {
+          var numHearts = 50;
+          var duration = 5000;
+          var pulsePeriod = 1500;
+          var baseScale = 75;
+          var hearts = [];
+
+          for (var i = 0; i < numHearts; i++) {
+            var $heart = $("<i></i>")
+              .addClass("fa-solid fa-heart")
+              .css({
+                position: "absolute",
+                transition: `all ${duration}ms ease`,
+              });
+            $("body").append($heart);
+            var phase = (i / numHearts) * 2 * Math.PI;
+            hearts.push({ element: $heart, phase: phase });
+          }
+
+          var startTime = null;
+          function animate(timestamp) {
+            if (!startTime) {
+              startTime = timestamp;
+            }
+            var elapsed = timestamp - startTime;
+
+            var pulse =
+              3 + 0.9 * Math.sin((2 * Math.PI * elapsed) / pulsePeriod);
+            var currentScale = baseScale * pulse;
+
+            $.each(hearts, function (index, heartObj) {
+              var t =
+                ((elapsed % duration) / duration) * 2 * Math.PI +
+                heartObj.phase;
+
+              // x = 16*sin³(t)
+              // y = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)
+              var x = 16 * Math.pow(Math.sin(t), 3);
+              var y =
+                13 * Math.cos(t) -
+                5 * Math.cos(2 * t) -
+                2 * Math.cos(3 * t) -
+                Math.cos(4 * t);
+
+              var posX = window.innerWidth / 2 + x * currentScale;
+              var posY = window.innerHeight / 2 - y * currentScale;
+
+              heartObj.element.css({
+                left: posX + "px",
+                top: posY + "px",
+              });
+            });
+
+            requestAnimationFrame(animate);
+          }
+
+          requestAnimationFrame(animate);
+        }
+      });
+    </script>
+  </body>
+</html>
