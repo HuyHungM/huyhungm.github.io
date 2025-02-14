@@ -43,7 +43,7 @@
         padding: 8px;
       }
 
-      #flower-container {
+      #heart-container {
         position: absolute;
         top: 0;
         left: 0;
@@ -228,7 +228,7 @@
           <h1>hihi anhh biett emm sẽ dongg ý maaa :>></h1>
         </div>
       </div>
-      <div id="flower-container"></div>
+      <div id="heart-container"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script>
@@ -238,7 +238,7 @@
         const $container = $("#container");
         const $noBtn = $("#no-btn");
         const $yesBtn = $("#yes-btn");
-        const $flowerContainer = $("#flower-container");
+        const $heartContainer = $("#heart-container");
         const $document = $(document);
         const $mouseCursor = $("#cursor-container");
 
@@ -301,8 +301,8 @@
 
         function createHeart() {
           for (let i = 0; i < poolSize; i++) {
-            const $heart = $("<i>").addClass("fa-solid fa-heart");
-            $flowerContainer.append($heart);
+            const $heart = $("<i></i>").addClass("fa-solid fa-heart");
+            $heartContainer.append($heart);
             animateHeart($heart);
           }
         }
@@ -311,7 +311,7 @@
           var numHearts = 50;
           var duration = 5000;
           var pulsePeriod = 2000;
-          var baseScale = 75;
+          var baseScale = 250;
           var hearts = [];
 
           for (var i = 0; i < numHearts; i++) {
@@ -334,7 +334,7 @@
             var elapsed = timestamp - startTime;
 
             var pulse =
-              3 + 0.9 * Math.sin((2 * Math.PI * elapsed) / pulsePeriod);
+              1 + 0.3 * Math.sin((2 * Math.PI * elapsed) / pulsePeriod);
             var currentScale = baseScale * pulse;
 
             $.each(hearts, function (index, heartObj) {
