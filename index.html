@@ -239,23 +239,25 @@
         const $noBtn = $("#no-btn");
         const $yesBtn = $("#yes-btn");
         const $heartContainer = $("#heart-container");
-        const $document = $(document);
         const $mouseCursor = $("#cursor-container");
 
-        $document.mousemove(function (event) {
-          var posX = event.pageX;
-          var posY = event.pageY;
-
-          $mouseCursor.css({ left: `${posX - 6}px`, top: `${posY}px` });
+        $(document).mousemove((event) => {
+          const posX = event.pageX;
+          const posY = event.pageY;
+          requestAnimationFrame(() => {
+            $mouseCursor.css({ left: `${posX - 6}px`, top: `${posY}px` });
+          });
         });
 
-        $noBtn.on("mouseenter", function () {
+        $noBtn.on("mouseenter", () => {
           const x = Math.random() * 95 - 50;
           const y = Math.random() * 80 - 50;
-          $(this).css("transform", `translate(${x}vw, ${y}vh)`);
+          requestAnimationFrame(() => {
+            $noBtn.css("transform", `translate(${x}vw, ${y}vh)`);
+          });
         });
 
-        $yesBtn.on("click", function () {
+        $yesBtn.on("click", () => {
           $qContainer.addClass("hide");
           $mouseCursor.remove();
           $container.css("background", `rgb(255, 175, 188)`);
@@ -268,9 +270,9 @@
         });
 
         const poolSize = 40;
-        const duration = 12000;
+        const heartDuration = 12000; // ms
 
-        function animateHeart($heart) {
+        const animateHeart = ($heart) => {
           const startX = Math.random() * 100;
           const startY = Math.random() * 100;
           const endX = Math.random() * 100;
@@ -285,7 +287,9 @@
           $heart[0].offsetWidth;
 
           $heart.css({
-            transition: `left ${duration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275), top ${duration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity ${duration}ms ease`,
+            transition: `left ${heartDuration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                         top ${heartDuration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                         opacity ${heartDuration}ms ease`,
           });
 
           setTimeout(() => {
@@ -296,64 +300,63 @@
             });
           }, 50);
 
-          setTimeout(() => animateHeart($heart), duration - 2000);
-        }
+          setTimeout(() => animateHeart($heart), heartDuration - 2000);
+        };
 
-        function createHeart() {
+        const createHeart = () => {
           for (let i = 0; i < poolSize; i++) {
             const $heart = $("<i></i>").addClass("fa-solid fa-heart");
             $heartContainer.append($heart);
             animateHeart($heart);
           }
-        }
+        };
 
-        function heartInHeart() {
-          var numHearts = 50;
-          var duration = 5000;
-          var pulsePeriod = 2000;
-          var baseScale = 250;
-          var hearts = [];
+        const heartInHeart = () => {
+          const numHearts = 50;
+          const heartInHeartDuration = 5000; // ms
+          const pulsePeriod = 2000; // ms
+          const baseScale = 250;
+          const hearts = [];
 
-          for (var i = 0; i < numHearts; i++) {
-            var $heart = $("<i></i>")
+          for (let i = 0; i < numHearts; i++) {
+            const $heart = $("<i></i>")
               .addClass("fa-solid fa-heart")
               .css({
                 position: "absolute",
-                transition: `all ${duration}ms ease`,
+                transition: `all ${heartInHeartDuration}ms ease`,
               });
-            $("#container").append($heart);
-            var phase = (i / numHearts) * 2 * Math.PI;
-            hearts.push({ element: $heart, phase: phase });
+            $container.append($heart);
+            const phase = (i / numHearts) * 2 * Math.PI;
+            hearts.push({ element: $heart, phase });
           }
 
-          var startTime = null;
-          function animate(timestamp) {
-            if (!startTime) {
-              startTime = timestamp;
-            }
-            var elapsed = timestamp - startTime;
+          let startTime = null;
+          const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const elapsed = timestamp - startTime;
 
-            var pulse =
+            const pulse =
               1 + 0.3 * Math.sin((2 * Math.PI * elapsed) / pulsePeriod);
-            var currentScale = baseScale * pulse;
+            const currentScale = baseScale * pulse;
 
-            $.each(hearts, function (index, heartObj) {
-              var t =
-                ((elapsed % duration) / duration) * 2 * Math.PI +
+            $.each(hearts, (index, heartObj) => {
+              const t =
+                ((elapsed % heartInHeartDuration) / heartInHeartDuration) *
+                  2 *
+                  Math.PI +
                 heartObj.phase;
 
               // x = 16*sin³(t)
               // y = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)
-              var x = 16 * Math.pow(Math.sin(t), 3);
-              var y =
+              const x = 16 * Math.pow(Math.sin(t), 3);
+              const y =
                 13 * Math.cos(t) -
                 5 * Math.cos(2 * t) -
                 2 * Math.cos(3 * t) -
                 Math.cos(4 * t);
 
-              var posX = window.innerWidth / 2 + x * currentScale;
-              var posY = window.innerHeight / 2 - y * currentScale;
-
+              const posX = window.innerWidth / 2 + x * currentScale;
+              const posY = window.innerHeight / 2 - y * currentScale;
               heartObj.element.css({
                 left: posX + "px",
                 top: posY + "px",
@@ -361,10 +364,10 @@
             });
 
             requestAnimationFrame(animate);
-          }
+          };
 
           requestAnimationFrame(animate);
-        }
+        };
       });
     </script>
   </body>
