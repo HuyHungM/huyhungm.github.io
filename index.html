@@ -242,8 +242,7 @@
         const $mouseCursor = $("#cursor-container");
 
         $(document).mousemove((event) => {
-          const posX = event.pageX;
-          const posY = event.pageY;
+          const { pageX: posX, pageY: posY } = event;
           requestAnimationFrame(() => {
             $mouseCursor.css({ left: `${posX - 6}px`, top: `${posY}px` });
           });
@@ -335,32 +334,35 @@
             if (!startTime) startTime = timestamp;
             const elapsed = timestamp - startTime;
 
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
             const pulse =
               1 + 0.3 * Math.sin((2 * Math.PI * elapsed) / pulsePeriod);
             const currentScale = baseScale * pulse;
 
-            $.each(hearts, (index, heartObj) => {
+            hearts.forEach(({ element, phase }) => {
               const t =
                 ((elapsed % heartInHeartDuration) / heartInHeartDuration) *
                   2 *
                   Math.PI +
-                heartObj.phase;
+                phase;
 
               // x = 16*sin³(t)
               // y = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)
-              const x = 16 * Math.pow(Math.sin(t), 3);
+              const sinT = Math.sin(t);
+              const cosT = Math.cos(t);
+              const x = 16 * Math.pow(sinT, 3);
               const y =
-                13 * Math.cos(t) -
+                13 * cosT -
                 5 * Math.cos(2 * t) -
                 2 * Math.cos(3 * t) -
                 Math.cos(4 * t);
 
-              const posX = window.innerWidth / 2 + x * currentScale;
-              const posY = window.innerHeight / 2 - y * currentScale;
-              heartObj.element.css({
-                left: posX + "px",
-                top: posY + "px",
-              });
+              const posX = centerX + x * currentScale;
+              const posY = centerY - y * currentScale;
+
+              element.css({ left: posX + "px", top: posY + "px" });
             });
 
             requestAnimationFrame(animate);
