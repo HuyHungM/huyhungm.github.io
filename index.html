@@ -39,6 +39,8 @@
         justify-content: center;
         background: black;
         transition: background 500ms ease;
+        overflow: hidden;
+        padding: 8px;
       }
 
       #flower-container {
@@ -252,7 +254,7 @@
                 position: "absolute",
                 transition: `all ${duration}ms ease`,
               });
-            $("body").append($heart);
+            $("#container").append($heart);
             var phase = (i / numHearts) * 2 * Math.PI;
             hearts.push({ element: $heart, phase: phase });
           }
