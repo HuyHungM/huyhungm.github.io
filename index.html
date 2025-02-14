@@ -126,14 +126,62 @@
         }
       }
 
+      #cursor-container {
+        position: absolute;
+        width: auto;
+        height: auto;
+        top: -100%;
+        left: -100%;
+        transition: left 100ms ease, top 100ms ease;
+        animation: zoomInOut2 2s ease infinite;
+        z-index: 100;
+        pointer-events: none;
+      }
+
+      #cursor-container i {
+        font-size: 16px;
+        opacity: 0.4;
+        animation: none;
+      }
+
+      @keyframes zoomInOut {
+        0% {
+          transform: scale(0.7);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.4;
+        }
+        100% {
+          transform: scale(0.7);
+          opacity: 0.2;
+        }
+      }
+
+      @keyframes zoomInOut2 {
+        0% {
+          transform: scale(0.5);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0.5);
+          opacity: 0.5;
+        }
+      }
+
       i {
         position: absolute;
         font-size: 26px;
         color: red;
         text-shadow: 0px 0px 10px red;
         opacity: 0;
-        animation: fade 2s ease forwards;
         transition: all 12s ease-in-out;
+        animation: zoomInOut 2s ease-in-out infinite;
       }
 
       @keyframes fade {
@@ -148,6 +196,15 @@
   </head>
   <body>
     <div id="container">
+      <div id="cursor-container">
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart"></i>
+      </div>
       <div id="q-container">
         <div class="content">
           <img
@@ -182,6 +239,15 @@
         const $noBtn = $("#no-btn");
         const $yesBtn = $("#yes-btn");
         const $flowerContainer = $("#flower-container");
+        const $document = $(document);
+        const $mouseCursor = $("#cursor-container");
+
+        $document.mousemove(function (event) {
+          var posX = event.pageX;
+          var posY = event.pageY;
+
+          $mouseCursor.css({ left: `${posX - 6}px`, top: `${posY}px` });
+        });
 
         $noBtn.on("mouseenter", function () {
           const x = Math.random() * 95 - 50;
@@ -191,6 +257,7 @@
 
         $yesBtn.on("click", function () {
           $qContainer.addClass("hide");
+          $mouseCursor.remove();
           $container.css("background", `rgb(255, 175, 188)`);
           setTimeout(() => {
             $aContainer.css("display", "flex");
