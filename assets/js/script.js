@@ -88,10 +88,10 @@ class MessageCreator {
     const name = this.nameInput.value.trim();
     this.previewName.textContent = name ? `Đồng chí ${name}` : "";
 
-    const baseNameSize = 16;
+    const baseNameSize = window.innerWidth < 768 ? 6 : 16;
     let nameLength = name.length;
     if (nameLength > 0) {
-      let scale = Math.max(0.6, 1 - (nameLength - 10) * 0.02);
+      let scale = Math.max(0.6, 1 - (nameLength - 15) * 0.02);
       this.previewName.style.fontSize = `${baseNameSize * scale}px`;
     } else {
       this.previewName.style.fontSize = `${baseNameSize}px`;
@@ -100,10 +100,10 @@ class MessageCreator {
     const role = this.roleInput.value.trim();
     this.previewRole.textContent = role;
 
-    const baseRoleSize = 16;
+    const baseRoleSize = window.innerWidth < 768 ? 6 : 16;
     let roleLength = role.length;
     if (roleLength > 0) {
-      let scale = Math.max(0.6, 1 - (roleLength - 10) * 0.02);
+      let scale = Math.max(0.6, 1 - (roleLength - 15) * 0.02);
       this.previewRole.style.fontSize = `${baseRoleSize * scale}px`;
     } else {
       this.previewRole.style.fontSize = `${baseRoleSize}px`;
@@ -111,15 +111,6 @@ class MessageCreator {
 
     const message = this.messageInput.value.trim();
     this.previewMessage.textContent = message;
-
-    const baseMsgSize = 16;
-    let msgLength = message.length;
-    if (msgLength > 0) {
-      let scale = Math.max(0.6, 1 - (msgLength - 100) * 0.002);
-      this.previewMessage.style.fontSize = `${baseMsgSize * scale}px`;
-    } else {
-      this.previewMessage.style.fontSize = `${baseMsgSize}px`;
-    }
 
     const hasContent =
       name && this.messageInput.value.trim() && this.avatarInput.files[0];
@@ -143,6 +134,29 @@ class MessageCreator {
     this.setLoading(true);
 
     try {
+      this.previewContainer.style = "width: 1024px";
+      this.previewMessage.style = "font-size: 16px; padding: 8px 16px;";
+      let baseNameSize = 16;
+      let nameLength = this.nameInput.value.length;
+      if (nameLength > 0) {
+        let scale = Math.max(0.6, 1 - (nameLength - 15) * 0.02);
+        this.previewName.style.fontSize = `${baseNameSize * scale}px`;
+      } else {
+        this.previewName.style.fontSize = `${baseNameSize}px`;
+      }
+
+      const role = this.roleInput.value.trim();
+      this.previewRole.textContent = role;
+
+      let baseRoleSize = 16;
+      let roleLength = role.length;
+      if (roleLength > 0) {
+        let scale = Math.max(0.6, 1 - roleLength * 0.02);
+        this.previewRole.style.fontSize = `${baseRoleSize * scale}px`;
+      } else {
+        this.previewRole.style.fontSize = `${baseRoleSize}px`;
+      }
+
       const canvas = await html2canvas(this.previewContainer, {
         useCORS: true,
         allowTaint: true,
@@ -150,6 +164,29 @@ class MessageCreator {
         backgroundColor: "#ffffff",
         logging: false,
       });
+
+      this.previewContainer.style = "width: 100%";
+      this.previewMessage.style =
+        window.innerWidth < 768
+          ? "font-size: 7px; padding: 2px;"
+          : "font-size: 16px; padding: 4px 16px;";
+      baseNameSize = window.innerWidth < 768 ? 6 : 16;
+      if (nameLength > 0) {
+        let scale = Math.max(0.6, 1 - (nameLength - 15) * 0.02);
+        this.previewName.style.fontSize = `${baseNameSize * scale}px`;
+      } else {
+        this.previewName.style.fontSize = `${baseNameSize}px`;
+      }
+
+      this.previewRole.textContent = role;
+
+      baseRoleSize = window.innerWidth < 768 ? 6 : 16;
+      if (roleLength > 0) {
+        let scale = Math.max(0.6, 1 - (roleLength - 15) * 0.02);
+        this.previewRole.style.fontSize = `${baseRoleSize * scale}px`;
+      } else {
+        this.previewRole.style.fontSize = `${baseRoleSize}px`;
+      }
 
       canvas.toBlob(
         (blob) => {

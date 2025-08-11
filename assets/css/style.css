@@ -309,10 +309,10 @@ body {
 
 .preview-avatar {
   position: absolute;
-  top: 49.85%;
-  left: 19.72%;
-  width: 15.15%;
-  height: 30.3%;
+  top: 53.5%;
+  left: 19.26%;
+  width: 18%;
+  height: 36.0005%;
   max-height: 128px;
   max-width: 128px;
   border-radius: 50%;
@@ -324,27 +324,31 @@ body {
 
 .preview-info {
   position: absolute;
-  top: 74%;
-  left: 19.72%;
-  width: 29%;
+  top: 80%;
+  left: 19.26%;
+  width: 32%;
   background: linear-gradient(
     to bottom,
     rgb(255, 215, 140),
     rgb(255, 236, 202)
   );
   border-radius: 16px;
-  height: 13%;
+  height: 14%;
   transform: translate(-50%, -50%);
   border: 2px rgb(255, 132, 0) solid;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-  padding: 5px 8px 0;
+  padding: 5px 8px 2px;
   z-index: 10;
   text-align: center;
 }
 
 .preview-info > div {
   line-height: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   font-family: "Lobster", sans-serif;
   font-weight: 600;
   color: rgb(155, 31, 0);
@@ -384,6 +388,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    font-size: 7px;
+  }
+
   .form-title {
     font-size: 1.5rem;
   }
@@ -395,5 +403,16 @@ body {
   .avatar-preview {
     width: 100px;
     height: 100px;
+  }
+
+  .preview-info {
+    padding: 1px;
+    line-height: 0.5;
+    border: 1px solid rgb(255, 132, 0);
+  }
+
+  .preview-message {
+    padding: 4px;
+    line-height: 1;
   }
 }
