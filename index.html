@@ -16,7 +16,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link id="nocache-css" rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="container">
@@ -118,6 +118,15 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="./assets/js/script.js" defer></script>
+    <script id="nocache-js" src="./assets/js/script.js" defer></script>
+    <script>
+      const ts = Date.now();
+      document.getElementById(
+        "nocache-css"
+      ).href = `./assets/css/style.css?v=${ts}`;
+      document.getElementById(
+        "nocache-js"
+      ).src = `./assets/js/script.js?v=${ts}`;
+    </script>
   </body>
 </html>
