@@ -392,12 +392,44 @@ body {
     font-size: 7px;
   }
 
+  .container {
+    padding: 8px 6px;
+    gap: 16px;
+  }
+
+  .form-section {
+    padding: 16px 8px;
+  }
+
+  .form-header {
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+  }
+
   .form-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .form-group {
+    margin-bottom: 8px;
   }
 
   .btn-group {
     flex-direction: column;
+    margin-top: 8px;
+  }
+
+  .preview-section {
+    padding: 8px;
+  }
+
+  .preview-title {
+    margin-bottom: 8px;
+  }
+
+  .preview-border {
+    padding: 0;
+    border: none;
   }
 
   .avatar-preview {

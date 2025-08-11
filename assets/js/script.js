@@ -134,7 +134,8 @@ class MessageCreator {
     this.setLoading(true);
 
     try {
-      this.previewContainer.style = "width: 1024px";
+      this.previewContainer.style =
+        "transition: none; position: absotube; left: 200%; width: 1024px";
       this.previewMessage.style = "font-size: 16px; padding: 8px 16px;";
       let baseNameSize = 16;
       let nameLength = this.nameInput.value.length;
@@ -165,7 +166,7 @@ class MessageCreator {
         logging: false,
       });
 
-      this.previewContainer.style = "width: 100%";
+      this.previewContainer.style = "position: relative; width: 100%";
       this.previewMessage.style =
         window.innerWidth < 768
           ? "font-size: 7px; padding: 2px;"
