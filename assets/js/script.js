@@ -41,6 +41,7 @@ class MessageCreator {
     this.form.addEventListener("submit", (e) => this.handleFormSubmit(e));
 
     this.generateBtn.addEventListener("mouseenter", () => this.validateForm());
+    window.addEventListener("resize", () => this.updatePreview());
   }
 
   handleAvatarUpload(event) {
@@ -111,6 +112,10 @@ class MessageCreator {
 
     const message = this.messageInput.value.trim();
     this.previewMessage.textContent = message;
+    this.previewMessage.style =
+      window.innerWidth < 768
+        ? "font-size: 7px; padding: 2px;"
+        : "font-size: 16px; padding: 4px 16px;";
 
     const hasContent =
       name && this.messageInput.value.trim() && this.avatarInput.files[0];
