@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Tạo thông điệp gửi Đại hội</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <div id="container">
+      <div id="info">
+        <form id="form" action="#">
+          <div class="title">TẠO THÔNG ĐIỆP GỬI ĐẠI HỘI</div>
+          <div class="form-child">
+            <label for="avatar">Ảnh đại diện</label>
+            <div class="avatar-preview"></div>
+            <input
+              type="file"
+              name="avatar"
+              id="avatar"
+              required
+              accept="image/png, image/jpeg"
+            />
+          </div>
+          <div class="form-child">
+            <label for="name">Họ tên</label
+            ><input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Nhập họ và tên"
+            />
+          </div>
+          <div class="form-child">
+            <label for="role">Chức vụ</label
+            ><input
+              type="text"
+              name="role"
+              id="role"
+              placeholder="Nhập chức vụ"
+            />
+          </div>
+          <div class="form-child">
+            <div class="note-label">
+              <label for="message">Thông điệp</label>
+              <div class="note">0/450 kí tự</div>
+            </div>
+            <textarea
+              name="message"
+              id="message"
+              maxlength="450"
+              placeholder="Nhập thông điệp..."
+            ></textarea>
+          </div>
+          <button type="submit">Tạo ảnh</button>
+        </form>
+      </div>
+      <div id="preview">
+        <div class="title">Xem trước</div>
+        <div class="preview-container">
+          <div class="avatar-preview"></div>
+          <div class="info-preview">
+            <p class="name"></p>
+            <p class="role">Chức vụ:</p>
+          </div>
+          <p class="message-preview"></p>
+          <img src="./assets/images/frame.png" alt="frame" />
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="./assets/js/script.js" async defer></script>
+  </body>
+</html>

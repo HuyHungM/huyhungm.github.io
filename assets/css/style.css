@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  user-select: none;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: black;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 16px;
+  height: 100%;
+  width: 100%;
+}
+
+#container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#info {
+  flex-direction: column;
+  overflow: auto;
+}
+
+#info #form {
+  border-radius: 16px;
+  box-shadow: 10px 10px 10px rgb(253, 255, 255);
+  padding: 20px;
+}
+
+#info #form > div {
+  margin: 16px 0;
+}
+
+#info #form .title {
+  padding: 16px 0;
+  font-size: 32px;
+}
+
+#info #form .form-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#info #form .form-child .note-label {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#info #form .form-child .note-label .note {
+  font-size: 12px;
+}
+
+#info #form .form-child #avatar {
+  display: none;
+}
+
+#info #form .form-child .avatar-preview {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#info #form .form-child input[type="image"] {
+  opacity: 0;
+}
+
+#info #form .form-child input[type="text"],
+#info #form .form-child textarea {
+  background-color: #f9f9f9;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px #ccc solid;
+}
+
+#info #form .form-child textarea {
+  resize: none;
+  height: 250px;
+  font-family: sans-serif;
+}
+
+#info #form button {
+  padding: 12px 32px;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: filter 300ms ease;
+}
+
+#info #form button:hover {
+  filter: brightness(0.8);
+}
+
+#preview {
+  border: 2px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  height: 600px;
+  gap: 16px;
+  align-self: center;
+  margin: auto;
+  width: 90%;
+}
+
+#preview .title {
+  font-size: 24px;
+}
+
+#preview .preview-container {
+  display: block;
+  width: 100%;
+  max-width: 715px;
+  height: auto;
+  position: relative;
+}
+
+#preview .preview-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+#preview .preview-container .avatar-preview {
+  position: absolute;
+  top: 49.85%;
+  left: 19.72%;
+  width: 15.15%;
+  height: 30.3%;
+  max-height: 128px;
+  max-width: 128px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+  background-position: center;
+  z-index: 10;
+}
+
+#preview .preview-container .info-preview {
+  position: absolute;
+  top: 74%;
+  left: 19.72%;
+  width: 29%;
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 215, 140),
+    rgb(255, 236, 202)
+  );
+  border-radius: 16px;
+  height: 13%;
+  transform: translate(-50%, -50%);
+  border: 2px rgb(255, 132, 0) solid;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  padding: 5px 8px;
+  z-index: 10;
+}
+
+#preview .preview-container .info-preview > p {
+  line-height: 1;
+  font-family: "Lobster", sans-serif;
+  font-weight: 600;
+  color: rgb(155, 31, 0);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#preview .preview-container .message-preview {
+  position: absolute;
+  top: 58%;
+  left: 65.9%;
+  height: 60%;
+  width: 58%;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+  background-position: center;
+  padding: 4px 16px;
+  line-height: 1.5;
+  white-space: pre-line;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  z-index: 10;
+  font-family: "Lobster", sans-serif;
+  font-weight: 600;
+  color: rgb(155, 31, 0);
+}
+
+@media screen and (max-width: 900px) {
+  #container {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 16px 0;
+  }
+
+  #container > div {
+    height: auto;
+    overflow: unset;
+  }
+}
