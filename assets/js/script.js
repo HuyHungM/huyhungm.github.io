@@ -29,7 +29,8 @@ const roleInput = document.getElementById("role");
 const rolePreview = document.querySelector(".info-preview .role");
 
 roleInput.addEventListener("input", () => {
-  rolePreview.textContent = `Chức vụ: ${roleInput.value}`;
+  rolePreview.textContent =
+    roleInput.value.length > 1 ? `Chức vụ: ${roleInput.value}` : "";
 });
 
 const messageInput = document.getElementById("message");
@@ -53,7 +54,7 @@ form.addEventListener("submit", (event) => {
 
     const link = document.createElement("a");
     link.href = imgData;
-    link.download = "screenshot.png";
+    link.download = "image.png";
     link.click();
   });
 });
