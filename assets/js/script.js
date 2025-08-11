@@ -114,7 +114,7 @@ class MessageCreator {
     this.previewMessage.textContent = message;
     this.previewMessage.style =
       window.innerWidth < 768
-        ? "font-size: 7px; padding: 2px;"
+        ? "font-size: 7px; padding: 8px;"
         : "font-size: 16px; padding: 4px 16px;";
 
     const hasContent =
@@ -174,7 +174,7 @@ class MessageCreator {
       this.previewContainer.style = "position: relative; width: 100%";
       this.previewMessage.style =
         window.innerWidth < 768
-          ? "font-size: 7px; padding: 2px;"
+          ? "font-size: 7px; padding: 8px;"
           : "font-size: 16px; padding: 4px 16px;";
       baseNameSize = window.innerWidth < 768 ? 6 : 16;
       if (nameLength > 0) {
