@@ -1,83 +1,111 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang="vi">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Tạo thông điệp gửi Đại hội</title>
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="Tạo thông điệp và ảnh đại diện cho Đại hội"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="#">upgrade your browser</a> to improve your experience.
-      </p>
-    <![endif]-->
+    <div class="container">
+      <!-- Form Section -->
+      <div class="card">
+        <div class="form-section">
+          <div class="form-header">
+            <h1 class="form-title">Tạo Thông Điệp Đại Hội</h1>
+          </div>
 
-    <div id="container">
-      <div id="info">
-        <form id="form" action="#">
-          <div class="title">TẠO THÔNG ĐIỆP GỬI ĐẠI HỘI</div>
-          <div class="form-child">
-            <label for="avatar">Ảnh đại diện</label>
-            <div class="avatar-preview"></div>
-            <input
-              type="file"
-              name="avatar"
-              id="avatar"
-              required
-              accept="image/png, image/jpeg"
-            />
-          </div>
-          <div class="form-child">
-            <label for="name">Họ tên</label
-            ><input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Nhập họ và tên"
-            />
-          </div>
-          <div class="form-child">
-            <label for="role">Chức vụ</label
-            ><input
-              type="text"
-              name="role"
-              id="role"
-              placeholder="Nhập chức vụ"
-            />
-          </div>
-          <div class="form-child">
-            <div class="note-label">
-              <label for="message">Thông điệp</label>
-              <div class="note">0/450 kí tự</div>
+          <div id="alert-container"></div>
+
+          <form id="messageForm">
+            <div class="form-group">
+              <div class="avatar-section">
+                <label class="form-label">Ảnh đại diện</label>
+                <div class="avatar-preview" id="avatarPreview"></div>
+                <input
+                  type="file"
+                  id="avatarInput"
+                  class="file-input"
+                  accept="image/png,image/jpeg,image/jpg"
+                  required
+                />
+              </div>
             </div>
-            <textarea
-              name="message"
-              id="message"
-              maxlength="450"
-              placeholder="Nhập thông điệp..."
-            ></textarea>
-          </div>
-          <button type="submit">Tạo ảnh</button>
-        </form>
+
+            <div class="form-group">
+              <label for="nameInput" class="form-label">Họ và tên *</label>
+              <input
+                type="text"
+                id="nameInput"
+                class="form-control"
+                placeholder="Nhập họ và tên"
+                required
+                maxlength="50"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="roleInput" class="form-label">Chức vụ</label>
+              <input
+                type="text"
+                id="roleInput"
+                class="form-control"
+                placeholder="Nhập chức vụ"
+                maxlength="30"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="messageInput" class="form-label">Thông điệp *</label>
+              <textarea
+                id="messageInput"
+                class="form-control textarea-control"
+                placeholder="Nhập thông điệp của bạn..."
+                required
+                maxlength="450"
+              ></textarea>
+              <div class="char-counter" id="charCounter">0/450 ký tự</div>
+            </div>
+
+            <div class="btn-group">
+              <button
+                type="submit"
+                id="generateBtn"
+                class="btn btn-success"
+                disabled
+              >
+                <span
+                  class="loading"
+                  id="loadingSpinner"
+                  style="display: none"
+                ></span>
+                Tạo ảnh
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div id="preview">
-        <div class="title">Xem trước</div>
-        <div class="preview-container">
-          <div class="avatar-preview"></div>
-          <div class="info-preview">
-            <p class="name"></p>
-            <p class="role"></p>
+
+      <!-- Preview Section -->
+      <div class="card">
+        <div class="preview-section">
+          <h2 class="preview-title">Xem trước</h2>
+          <div class="preview-border">
+            <div class="preview-container" id="previewContainer">
+              <div class="preview-avatar" id="previewAvatar"></div>
+              <div class="preview-info">
+                <div class="preview-name" id="previewName"></div>
+                <div class="preview-role" id="previewRole"></div>
+              </div>
+              <div class="preview-message" id="previewMessage"></div>
+              <img src="./assets/images/frame.png" alt="frame" />
+            </div>
           </div>
-          <p class="message-preview"></p>
-          <img src="./assets/images/frame.png" alt="frame" />
         </div>
       </div>
     </div>
