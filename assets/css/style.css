@@ -36,7 +36,7 @@ body {
   padding: 2rem;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 40% 60%;
   gap: 16px;
   align-items: center;
 }
