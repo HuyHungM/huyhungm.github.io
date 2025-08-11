@@ -72,8 +72,15 @@ class MessageCreator {
   }
 
   handleMessageInput(event) {
-    const length = event.target.value.length;
+    const length = event.target.value.trim().replace(/\s+/g, " ").length;
     const maxLength = 450;
+
+    if (length > maxLength) {
+      event.target.value = this.lastValidValue || "";
+      return;
+    }
+
+    this.lastValidValue = event.target.value;
 
     this.charCounter.textContent = `${length}/${maxLength} ký tự`;
 
