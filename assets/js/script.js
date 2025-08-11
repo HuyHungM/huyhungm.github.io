@@ -110,7 +110,7 @@ class MessageCreator {
       this.previewRole.style.fontSize = `${baseRoleSize}px`;
     }
 
-    const message = this.messageInput.value.trim();
+    const message = this.messageInput.value;
     this.previewMessage.textContent = message;
     this.previewMessage.style =
       window.innerWidth < 768
