@@ -73,7 +73,7 @@ class MessageCreator {
 
   handleMessageInput(event) {
     const length = event.target.value.trim().replace(/\s+/g, " ").length;
-    const maxLength = 450;
+    const maxLength = 500;
 
     if (length > maxLength) {
       event.target.value = this.lastValidValue || "";
@@ -96,10 +96,10 @@ class MessageCreator {
     const name = this.nameInput.value.trim();
     this.previewName.textContent = name ? `Đồng chí ${name}` : "";
 
-    const baseNameSize = window.innerWidth < 768 ? 6 : 16;
+    const baseNameSize = window.innerWidth < 768 ? 5 : 14;
     let nameLength = name.length;
     if (nameLength > 0) {
-      let scale = Math.max(0.6, 1 - (nameLength - 15) * 0.02);
+      let scale = Math.max(0.6, 1 - (nameLength - 17) * 0.02);
       this.previewName.style.fontSize = `${baseNameSize * scale}px`;
     } else {
       this.previewName.style.fontSize = `${baseNameSize}px`;
@@ -108,10 +108,10 @@ class MessageCreator {
     const role = this.roleInput.value.trim();
     this.previewRole.textContent = role;
 
-    const baseRoleSize = window.innerWidth < 768 ? 6 : 16;
+    const baseRoleSize = window.innerWidth < 768 ? 5 : 14;
     let roleLength = role.length;
     if (roleLength > 0) {
-      let scale = Math.max(0.6, 1 - (roleLength - 15) * 0.02);
+      let scale = Math.max(0.6, 1 - (roleLength - 24) * 0.02);
       this.previewRole.style.fontSize = `${baseRoleSize * scale}px`;
     } else {
       this.previewRole.style.fontSize = `${baseRoleSize}px`;
@@ -119,10 +119,6 @@ class MessageCreator {
 
     const message = this.messageInput.value;
     this.previewMessage.textContent = message;
-    this.previewMessage.style =
-      window.innerWidth < 768
-        ? "font-size: 7px; padding: 8px;"
-        : "font-size: 16px; padding: 4px 16px;";
 
     const hasContent =
       name && this.messageInput.value.trim() && this.avatarInput.files[0];
@@ -146,29 +142,8 @@ class MessageCreator {
     this.setLoading(true);
 
     try {
-      this.previewContainer.style =
-        "transition: none; position: absotube; left: 200%; width: 1024px";
-      this.previewMessage.style = "font-size: 16px; padding: 8px 16px;";
-      let baseNameSize = 16;
-      let nameLength = this.nameInput.value.length;
-      if (nameLength > 0) {
-        let scale = Math.max(0.6, 1 - (nameLength - 15) * 0.02);
-        this.previewName.style.fontSize = `${baseNameSize * scale}px`;
-      } else {
-        this.previewName.style.fontSize = `${baseNameSize}px`;
-      }
-
-      const role = this.roleInput.value.trim();
-      this.previewRole.textContent = role;
-
-      let baseRoleSize = 16;
-      let roleLength = role.length;
-      if (roleLength > 0) {
-        let scale = Math.max(0.6, 1 - roleLength * 0.02);
-        this.previewRole.style.fontSize = `${baseRoleSize * scale}px`;
-      } else {
-        this.previewRole.style.fontSize = `${baseRoleSize}px`;
-      }
+      this.previewContainer.classList.add("screenshot");
+      this.updatePreview();
 
       const canvas = await html2canvas(this.previewContainer, {
         useCORS: true,
@@ -178,28 +153,8 @@ class MessageCreator {
         logging: false,
       });
 
-      this.previewContainer.style = "position: relative; width: 100%";
-      this.previewMessage.style =
-        window.innerWidth < 768
-          ? "font-size: 7px; padding: 8px;"
-          : "font-size: 16px; padding: 4px 16px;";
-      baseNameSize = window.innerWidth < 768 ? 6 : 16;
-      if (nameLength > 0) {
-        let scale = Math.max(0.6, 1 - (nameLength - 15) * 0.02);
-        this.previewName.style.fontSize = `${baseNameSize * scale}px`;
-      } else {
-        this.previewName.style.fontSize = `${baseNameSize}px`;
-      }
-
-      this.previewRole.textContent = role;
-
-      baseRoleSize = window.innerWidth < 768 ? 6 : 16;
-      if (roleLength > 0) {
-        let scale = Math.max(0.6, 1 - (roleLength - 15) * 0.02);
-        this.previewRole.style.fontSize = `${baseRoleSize * scale}px`;
-      } else {
-        this.previewRole.style.fontSize = `${baseRoleSize}px`;
-      }
+      this.previewContainer.classList.remove("screenshot");
+      this.updatePreview();
 
       canvas.toBlob(
         (blob) => {
